@@ -48,7 +48,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Location Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCi-tn-hB3">
-                                                    <rect key="frame" x="90" y="40" width="159" height="30"/>
+                                                    <rect key="frame" x="90" y="40" width="280" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="nzV-HQ-Mdl"/>
                                                     </constraints>
@@ -57,7 +57,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Date Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dIG-3y-S7e">
-                                                    <rect key="frame" x="90" y="75" width="129.5" height="30"/>
+                                                    <rect key="frame" x="90" y="75" width="280" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="dIM-XV-zUQ"/>
                                                     </constraints>
@@ -69,12 +69,14 @@
                                             <constraints>
                                                 <constraint firstItem="dIG-3y-S7e" firstAttribute="top" secondItem="NCi-tn-hB3" secondAttribute="bottom" constant="5" id="3ET-MC-icq"/>
                                                 <constraint firstItem="NCi-tn-hB3" firstAttribute="top" secondItem="8zm-mc-JAP" secondAttribute="bottom" constant="5" id="3n9-Yh-MTb"/>
+                                                <constraint firstItem="NCi-tn-hB3" firstAttribute="trailing" secondItem="8zm-mc-JAP" secondAttribute="trailing" id="8MM-g6-Cc9"/>
                                                 <constraint firstItem="tFD-cA-ZoA" firstAttribute="leading" secondItem="Eoz-lO-5bu" secondAttribute="leading" constant="15" id="QrX-dh-CB7"/>
                                                 <constraint firstItem="8zm-mc-JAP" firstAttribute="top" secondItem="Eoz-lO-5bu" secondAttribute="top" constant="5" id="WE1-Jf-PYe"/>
                                                 <constraint firstItem="dIG-3y-S7e" firstAttribute="leading" secondItem="8zm-mc-JAP" secondAttribute="leading" id="dlr-zV-sYx"/>
                                                 <constraint firstItem="8zm-mc-JAP" firstAttribute="trailing" secondItem="Eoz-lO-5bu" secondAttribute="trailingMargin" constant="10" id="hhX-IG-9Wu"/>
                                                 <constraint firstItem="8zm-mc-JAP" firstAttribute="leading" secondItem="tFD-cA-ZoA" secondAttribute="trailing" constant="15" id="oFw-k8-9Ax"/>
                                                 <constraint firstItem="NCi-tn-hB3" firstAttribute="leading" secondItem="8zm-mc-JAP" secondAttribute="leading" id="oGH-f6-g6N"/>
+                                                <constraint firstItem="dIG-3y-S7e" firstAttribute="trailing" secondItem="8zm-mc-JAP" secondAttribute="trailing" id="pyI-Bw-ZFf"/>
                                                 <constraint firstItem="tFD-cA-ZoA" firstAttribute="centerY" secondItem="Eoz-lO-5bu" secondAttribute="centerY" id="wKl-3B-Oh9"/>
                                             </constraints>
                                         </tableViewCellContentView>
