@@ -18,7 +18,14 @@ class EventDetailViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-  
+    
+    //set the title text
+    self.navigationItem.title = self.displayedEvent?.title
+    let attrs = [
+      NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Bold", size: 24)!
+    ]
+    self.navigationController?.navigationBar.titleTextAttributes = attrs
+    
     if let event = self.displayedEvent {
       self.eventImageView.downloadImageFromNetworkAtURL(url: event.imageUrlString)
       self.eventDateTimeLabel.text = event.formattedDateTimeString
