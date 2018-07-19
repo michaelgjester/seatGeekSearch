@@ -13,6 +13,17 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
+    
+    let dummyCompletionHandler: ([Event]) -> Void = { [weak self] (eventArray:[Event]) -> Void in
+      
+      for event in eventArray{
+        print("********************")
+        print("event.id = \(event.id)")
+        print("event.title = \(event.title)")
+      }
+    }
+    
+    NetworkingManager.loadEventsWithCompletion(completionHandler: dummyCompletionHandler)
   }
 
   override func didReceiveMemoryWarning() {

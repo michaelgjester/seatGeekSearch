@@ -14,6 +14,8 @@
 		1DFF9B4A2100B1E900C4613A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DFF9B482100B1E900C4613A /* LaunchScreen.storyboard */; };
 		1DFF9B552100B1E900C4613A /* seatGeekSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFF9B542100B1E900C4613A /* seatGeekSearchTests.swift */; };
 		1DFF9B602100B1E900C4613A /* seatGeekSearchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFF9B5F2100B1E900C4613A /* seatGeekSearchUITests.swift */; };
+		1DFF9B702100B69B00C4613A /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFF9B6F2100B69B00C4613A /* Event.swift */; };
+		1DFF9B722100B75400C4613A /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFF9B712100B75400C4613A /* NetworkingManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		1DFF9B5B2100B1E900C4613A /* seatGeekSearchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = seatGeekSearchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DFF9B5F2100B1E900C4613A /* seatGeekSearchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = seatGeekSearchUITests.swift; sourceTree = "<group>"; };
 		1DFF9B612100B1E900C4613A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1DFF9B6F2100B69B00C4613A /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		1DFF9B712100B75400C4613A /* NetworkingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,8 @@
 		1DFF9B3E2100B1E700C4613A /* seatGeekSearch */ = {
 			isa = PBXGroup;
 			children = (
+				1DFF9B6E2100B64900C4613A /* Model */,
+				1DFF9B6D2100B59900C4613A /* Networking */,
 				1DFF9B3F2100B1E700C4613A /* AppDelegate.swift */,
 				1DFF9B412100B1E700C4613A /* ViewController.swift */,
 				1DFF9B432100B1E700C4613A /* Main.storyboard */,
@@ -123,6 +129,22 @@
 				1DFF9B612100B1E900C4613A /* Info.plist */,
 			);
 			path = seatGeekSearchUITests;
+			sourceTree = "<group>";
+		};
+		1DFF9B6D2100B59900C4613A /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				1DFF9B712100B75400C4613A /* NetworkingManager.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		1DFF9B6E2100B64900C4613A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1DFF9B6F2100B69B00C4613A /* Event.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,6 +279,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DFF9B422100B1E700C4613A /* ViewController.swift in Sources */,
+				1DFF9B722100B75400C4613A /* NetworkingManager.swift in Sources */,
+				1DFF9B702100B69B00C4613A /* Event.swift in Sources */,
 				1DFF9B402100B1E700C4613A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
