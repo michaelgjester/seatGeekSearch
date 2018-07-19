@@ -17,6 +17,7 @@
 		1DFF9B702100B69B00C4613A /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFF9B6F2100B69B00C4613A /* Event.swift */; };
 		1DFF9B722100B75400C4613A /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFF9B712100B75400C4613A /* NetworkingManager.swift */; };
 		1DFF9B762100D46400C4613A /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFF9B742100D46400C4613A /* EventListViewController.swift */; };
+		1DFF9B7A2100DEAD00C4613A /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFF9B782100DEAD00C4613A /* EventTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		1DFF9B6F2100B69B00C4613A /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		1DFF9B712100B75400C4613A /* NetworkingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		1DFF9B742100D46400C4613A /* EventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
+		1DFF9B782100DEAD00C4613A /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 			children = (
 				1DFF9B412100B1E700C4613A /* ViewController.swift */,
 				1DFF9B742100D46400C4613A /* EventListViewController.swift */,
+				1DFF9B782100DEAD00C4613A /* EventTableViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DFF9B7A2100DEAD00C4613A /* EventTableViewCell.swift in Sources */,
 				1DFF9B762100D46400C4613A /* EventListViewController.swift in Sources */,
 				1DFF9B422100B1E700C4613A /* ViewController.swift in Sources */,
 				1DFF9B722100B75400C4613A /* NetworkingManager.swift in Sources */,
