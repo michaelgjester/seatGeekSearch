@@ -88,11 +88,9 @@ extension EventListViewController: UITableViewDataSource {
 extension EventListViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    print("selectedRow = \(indexPath.row)")
-    
     let selectedEvent: Event = self.eventArray[indexPath.row]
-    
     let detailVC: EventDetailViewController = EventDetailViewController()
+    detailVC.displayedEvent = selectedEvent
     self.navigationController?.pushViewController(detailVC, animated: true)
   }
 }

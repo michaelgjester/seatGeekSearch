@@ -12,6 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EventDetailViewController" customModule="seatGeekSearch" customModuleProvider="target">
             <connections>
+                <outlet property="eventDateTimeLabel" destination="8XK-72-ZSl" id="yHt-qD-VoK"/>
+                <outlet property="eventImageView" destination="aoH-xA-12n" id="fbF-TF-t9K"/>
+                <outlet property="eventLocationLabel" destination="5yk-Xq-ceR" id="0B0-ih-ZQr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,16 +23,39 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8XK-72-ZSl">
-                    <rect key="frame" x="166" y="315" width="44" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aoH-xA-12n">
+                    <rect key="frame" x="16" y="46" width="343" height="200"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="eej-5S-qlf"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5yk-Xq-ceR">
+                    <rect key="frame" x="16" y="323" width="343" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8XK-72-ZSl">
+                    <rect key="frame" x="16" y="279" width="343" height="29"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="8XK-72-ZSl" firstAttribute="top" secondItem="aoH-xA-12n" secondAttribute="bottom" constant="33" id="35V-Hm-BBE"/>
+                <constraint firstItem="5yk-Xq-ceR" firstAttribute="trailing" secondItem="8XK-72-ZSl" secondAttribute="trailing" id="9jC-5K-Il6"/>
+                <constraint firstItem="aoH-xA-12n" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="IUm-B0-geS"/>
+                <constraint firstItem="8XK-72-ZSl" firstAttribute="trailing" secondItem="aoH-xA-12n" secondAttribute="trailing" id="a8k-Aa-hgQ"/>
+                <constraint firstItem="8XK-72-ZSl" firstAttribute="leading" secondItem="aoH-xA-12n" secondAttribute="leading" id="aVX-Oc-AHb"/>
+                <constraint firstItem="5yk-Xq-ceR" firstAttribute="leading" secondItem="8XK-72-ZSl" secondAttribute="leading" id="gPD-2m-lnA"/>
+                <constraint firstItem="aoH-xA-12n" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="26" id="i2y-Zi-Kub"/>
+                <constraint firstItem="aoH-xA-12n" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="vTu-Rj-E4e"/>
+                <constraint firstItem="5yk-Xq-ceR" firstAttribute="top" secondItem="8XK-72-ZSl" secondAttribute="bottom" constant="15" id="wem-H7-3s1"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="33.5" y="165.5"/>
         </view>
     </objects>
 </document>
