@@ -74,7 +74,7 @@ extension EventListViewController: UITableViewDataSource {
     
     cell.eventTitleLabel.text = eventArray[indexPath.row].title
     cell.eventLocationLabel.text = eventArray[indexPath.row].locationString
-    cell.eventDateTimeLabel.text = eventArray[indexPath.row].dateTimeString
+    cell.eventDateTimeLabel.text = eventArray[indexPath.row].formattedDateTimeString
     
     
     return cell
