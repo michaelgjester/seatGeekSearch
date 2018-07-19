@@ -24,7 +24,7 @@ extension UIImageView{
         let activityIndicatorFrame: CGRect = CGRect.init(x: 0.0, y: 0.0, width: self.frame.size.width, height: self.frame.size.height)
         let spinner: UIActivityIndicatorView = UIActivityIndicatorView.init(frame: activityIndicatorFrame)
         spinner.color = UIColor.black
-        spinner.backgroundColor = UIColor.orange
+        spinner.backgroundColor = UIColor.blue
         spinner.hidesWhenStopped = true
         self.addSubview(spinner)
         spinner.startAnimating()
