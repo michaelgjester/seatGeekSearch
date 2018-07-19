@@ -109,6 +109,7 @@
                     <navigationItem key="navigationItem" id="4Ti-ed-1Bl"/>
                     <connections>
                         <outlet property="eventListTableView" destination="giw-cI-VPv" id="Kro-pF-O4j"/>
+                        <outlet property="searchBar" destination="w6z-4v-q2E" id="Mno-qA-Xdy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UT8-oj-URP" userLabel="First Responder" sceneMemberID="firstResponder"/>

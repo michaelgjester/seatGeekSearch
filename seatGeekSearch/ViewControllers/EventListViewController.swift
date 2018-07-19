@@ -10,35 +10,19 @@ import UIKit
 
 class EventListViewController: UIViewController {
 
-    @IBOutlet weak var eventListTableView: UITableView!
+  @IBOutlet weak var eventListTableView: UITableView!
+  @IBOutlet weak var searchBar: UISearchBar!
   
-    private var eventArray: [Event] = []
+  private var eventArray: [Event] = []
   
     override func viewDidLoad() {
       super.viewDidLoad()
 
       eventListTableView.dataSource = self
       eventListTableView.delegate = self
+      searchBar.delegate = self
       
-      // Do any additional setup after loading the view.
-      let loadEventsCompletionHandler: ([Event]) -> Void = { [weak self] (eventArray:[Event]) -> Void in
-        
-        //DEBUG CODE
-        /*
-        for event in eventArray{
-          print("********************")
-          print("event.id = \(event.id)")
-          print("event.title = \(event.title)")
-          print("event.dateTimeString = \(event.dateTimeString)")
-          print("event.imageUrlString = \(event.imageUrlString)")
-        }
-        */
-        
-        self?.eventArray = eventArray
-        self?.eventListTableView.reloadData()
-      }
-      
-  NetworkingManager.loadEventsWithCompletion(completionHandler: loadEventsCompletionHandler)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -95,6 +79,33 @@ extension EventListViewController: UITableViewDelegate {
     self.navigationController?.pushViewController(detailVC, animated: true)
     
     tableView.deselectRow(at: indexPath, animated: true)
+  }
+  
+}
+
+// MARK: UISearchBarDelegate
+extension EventListViewController: UISearchBarDelegate {
+  
+//  public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
+//    print("searchText = \(searchText)")
+//  }
+  
+  
+  public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    print("searchButtonClicked")
+    
+    if let searchText = searchBar.text {
+      
+      let loadEventsCompletionHandler: ([Event]) -> Void = { [weak self] (eventArray:[Event]) -> Void in
+        
+        self?.eventArray = eventArray
+        self?.eventListTableView.reloadData()
+      }
+      NetworkingManager.loadEventsWithCompletion(searchText: searchText, completionHandler: loadEventsCompletionHandler)
+      
+    }
+    
+    searchBar.resignFirstResponder()
   }
   
 }

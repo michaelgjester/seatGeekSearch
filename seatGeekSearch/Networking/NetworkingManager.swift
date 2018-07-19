@@ -10,10 +10,13 @@ import UIKit
 
 class NetworkingManager: NSObject {
     
-  static func loadEventsWithCompletion(completionHandler:@escaping ([Event]) -> Void) -> Void{
+  static func loadEventsWithCompletion(searchText: String, completionHandler:@escaping ([Event]) -> Void) -> Void{
     
       let clientId = "OTIwNTk4M3wxNTMyMDAwOTg0Ljg3"
-      let eventRequestString = "https://api.seatgeek.com/2/events?client_id=" + clientId + "&q=New+York+Yankees"
+
+      
+      let updatedSearchText = searchText.replacingOccurrences(of: " ", with:"+")
+      let eventRequestString = "https://api.seatgeek.com/2/events?client_id=" + clientId + "&q=" + updatedSearchText
     
       guard let url = URL(string: eventRequestString) else {
           print("Error: cannot create URL")
@@ -158,7 +161,7 @@ class NetworkingManager: NSObject {
     var isValidEventType = false
     
     for eventTypeDictionary in eventTypeDictionaryArray! {
-      if (eventTypeDictionary["name"] as! String == "baseball") {
+      if (eventTypeDictionary["name"] as! String == "sports") {
         isValidEventType = true
         break
       }
