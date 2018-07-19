@@ -27,6 +27,8 @@ class EventDetailViewController: UIViewController {
     self.navigationController?.navigationBar.titleTextAttributes = attrs
     
     if let event = self.displayedEvent {
+      self.eventImageView.layer.cornerRadius = 10
+      self.eventImageView.clipsToBounds = true
       self.eventImageView.downloadImageFromNetworkAtURL(url: event.imageUrlString)
       self.eventDateTimeLabel.text = event.formattedDateTimeString
       self.eventLocationLabel.text = event.locationString

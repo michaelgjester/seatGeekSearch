@@ -60,6 +60,8 @@ extension EventListViewController: UITableViewDataSource {
     cell.eventLocationLabel.text = eventArray[indexPath.row].locationString
     cell.eventDateTimeLabel.text = eventArray[indexPath.row].formattedDateTimeString
     
+    cell.eventThumbnailImageView.layer.cornerRadius = 10
+    cell.eventThumbnailImageView.clipsToBounds = true
     cell.eventThumbnailImageView?.downloadImageFromNetworkAtURL(url: eventArray[indexPath.row].imageUrlString)
 
     
