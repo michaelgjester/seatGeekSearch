@@ -72,9 +72,10 @@ extension EventListViewController: UITableViewDataSource {
     let reuseIdentifier = "EventTableViewCell"
     let cell = eventListTableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! EventTableViewCell
     
-    //cell.textLabel!.text = eventArray[indexPath.row].title
     cell.eventTitleLabel.text = eventArray[indexPath.row].title
+    cell.eventLocationLabel.text = eventArray[indexPath.row].locationString
     cell.eventDateTimeLabel.text = eventArray[indexPath.row].dateTimeString
+    
     
     return cell
   }

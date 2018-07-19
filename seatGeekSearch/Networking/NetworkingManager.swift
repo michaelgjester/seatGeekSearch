@@ -82,6 +82,15 @@ class NetworkingManager: NSObject {
             currentEvent.title = eventDictionary["title"] as! String
             currentEvent.dateTimeString = eventDictionary["datetime_local"] as! String
           
+            if let venueJsonDictionary = eventDictionary["venue"] as? Dictionary<String, AnyObject> {
+              if let city = venueJsonDictionary["city"] as? String, let state = venueJsonDictionary["state"] as? String {
+                currentEvent.locationString = city + ", " + state
+              }
+              
+            }
+          
+            //currentEvent.location = eventDictionary[""] as! String
+          
             if let performersJsonArray = eventDictionary["performers"] as? [Dictionary<String, AnyObject>] {
               
               //FIXME -
