@@ -13,7 +13,7 @@ class NetworkingManager: NSObject {
   static func loadEventsWithCompletion(completionHandler:@escaping ([Event]) -> Void) -> Void{
     
       let clientId = "OTIwNTk4M3wxNTMyMDAwOTg0Ljg3"
-      let eventRequestString = "https://api.seatgeek.com/2/events?client_id=" + clientId + "&q=Texas+Ranger"
+      let eventRequestString = "https://api.seatgeek.com/2/events?client_id=" + clientId + "&q=New+York+Yankees"
     
       guard let url = URL(string: eventRequestString) else {
           print("Error: cannot create URL")
@@ -117,37 +117,54 @@ class NetworkingManager: NSObject {
       var eventArray: [Event] = []
     
       for eventDictionary in jsonArray{
-          let currentEvent: Event = Event()
-        
-          currentEvent.id = eventDictionary["id"]!.stringValue as String
-          currentEvent.title = eventDictionary["title"] as! String
-          currentEvent.dateTimeString = eventDictionary["datetime_local"] as! String
-        
-          if let venueJsonDictionary = eventDictionary["venue"] as? Dictionary<String, AnyObject> {
-            if let city = venueJsonDictionary["city"] as? String, let state = venueJsonDictionary["state"] as? String {
-              currentEvent.locationString = city + ", " + state
-            }
-            
+        let currentEvent: Event = Event()
+      
+        if !isValidEventType(eventDictionary) {
+          return []
+        }
+              
+        currentEvent.id = eventDictionary["id"]!.stringValue as String
+        currentEvent.title = eventDictionary["title"] as! String
+        currentEvent.dateTimeString = eventDictionary["datetime_local"] as! String
+      
+        if let venueJsonDictionary = eventDictionary["venue"] as? Dictionary<String, AnyObject> {
+          if let city = venueJsonDictionary["city"] as? String, let state = venueJsonDictionary["state"] as? String {
+            currentEvent.locationString = city + ", " + state
           }
-        
-          //currentEvent.location = eventDictionary[""] as! String
-        
-          if let performersJsonArray = eventDictionary["performers"] as? [Dictionary<String, AnyObject>] {
-            
-            //FIXME -
-            //not sure we can assume home team always second element in array?
-            let homeTeam = performersJsonArray[1]
-            
-            if let imageUrl = homeTeam["image"] as? String {
-              currentEvent.imageUrlString  = imageUrl
-            }
-            
+          
+        }
+      
+        if let performersJsonArray = eventDictionary["performers"] as? [Dictionary<String, AnyObject>] {
+          
+          //FIXME -
+          //not sure we can assume home team always second element in array?
+          let homeTeam = performersJsonArray[1]
+          
+          if let imageUrl = homeTeam["image"] as? String {
+            currentEvent.imageUrlString  = imageUrl
           }
-          eventArray.append(currentEvent)
+          
+        }
+        eventArray.append(currentEvent)
       }
 
     
       return eventArray
+  }
+  
+  static func isValidEventType(_ eventDictionary: Dictionary<String, AnyObject>) -> Bool {
+    
+    let eventTypeDictionaryArray = eventDictionary["taxonomies"] as? [Dictionary<String, AnyObject>]
+    var isValidEventType = false
+    
+    for eventTypeDictionary in eventTypeDictionaryArray! {
+      if (eventTypeDictionary["name"] as! String == "baseball") {
+        isValidEventType = true
+        break
+      }
+    }
+    
+    return isValidEventType
   }
   
 
