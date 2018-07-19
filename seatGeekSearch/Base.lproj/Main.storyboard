@@ -14,14 +14,13 @@
         <!--Event List View Controller-->
         <scene sceneID="YmX-Tm-Ooe">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UT8-oj-URP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="LbD-Ro-pJj" customClass="EventListViewController" customModule="seatGeekSearch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GzL-ju-IyX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="giw-cI-VPv">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventTableViewCell" id="qTq-KW-2bZ" customClass="EventTableViewCell" customModule="seatGeekSearch" customModuleProvider="target">
@@ -89,12 +88,20 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="w6z-4v-q2E">
+                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="w6z-4v-q2E" firstAttribute="top" secondItem="6NS-xt-0LS" secondAttribute="top" id="1ao-Zg-jsH"/>
+                            <constraint firstItem="w6z-4v-q2E" firstAttribute="leading" secondItem="6NS-xt-0LS" secondAttribute="leading" id="Wiv-i8-tAr"/>
                             <constraint firstItem="giw-cI-VPv" firstAttribute="trailing" secondItem="6NS-xt-0LS" secondAttribute="trailing" id="cF5-Sa-SfM"/>
                             <constraint firstItem="giw-cI-VPv" firstAttribute="bottom" secondItem="6NS-xt-0LS" secondAttribute="bottom" id="feD-Vh-fOY"/>
-                            <constraint firstItem="giw-cI-VPv" firstAttribute="top" secondItem="6NS-xt-0LS" secondAttribute="top" id="wNp-4Q-ZSV"/>
+                            <constraint firstItem="w6z-4v-q2E" firstAttribute="width" secondItem="GzL-ju-IyX" secondAttribute="width" id="jtk-xA-SQ6"/>
+                            <constraint firstItem="giw-cI-VPv" firstAttribute="top" secondItem="w6z-4v-q2E" secondAttribute="bottom" id="nCb-G0-Hao"/>
+                            <constraint firstItem="w6z-4v-q2E" firstAttribute="leading" secondItem="6NS-xt-0LS" secondAttribute="trailing" constant="-375" id="q2U-WT-GFN"/>
                             <constraint firstItem="giw-cI-VPv" firstAttribute="leading" secondItem="6NS-xt-0LS" secondAttribute="leading" id="yjy-mT-Qm0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6NS-xt-0LS"/>
@@ -104,6 +111,7 @@
                         <outlet property="eventListTableView" destination="giw-cI-VPv" id="Kro-pF-O4j"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UT8-oj-URP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1776.8" y="119.1904047976012"/>
         </scene>
