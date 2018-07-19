@@ -12,10 +12,14 @@ class Event: NSObject {
   
   var id: String
   var title: String
+  var dateTimeString: String
+  var imageUrlString: String
   
   override init(){
     self.id = ""
     self.title = ""
+    self.dateTimeString = ""
+    self.imageUrlString = ""
   }
   
 }

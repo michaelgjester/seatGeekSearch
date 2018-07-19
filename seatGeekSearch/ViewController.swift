@@ -20,6 +20,8 @@ class ViewController: UIViewController {
         print("********************")
         print("event.id = \(event.id)")
         print("event.title = \(event.title)")
+        print("event.dateTimeString = \(event.dateTimeString)")
+        print("event.imageUrlString = \(event.imageUrlString)")
       }
     }
     

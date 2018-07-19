@@ -46,14 +46,6 @@ class NetworkingManager: NSObject {
             if response != nil {
                 do {
                   
-//                  if let response = response {
-//                    print("response = \(response)")
-//                    if let data = data {
-//                      print("data = \(data)")
-//
-//                    }
-//                  }
-                  
                     //JSON response is an array of dictionaries
                     if let jsonDictionary = try JSONSerialization.jsonObject(with: data!, options: [])as? [String: AnyObject]{
                       
@@ -88,16 +80,19 @@ class NetworkingManager: NSObject {
           
             currentEvent.id = eventDictionary["id"]!.stringValue as String
             currentEvent.title = eventDictionary["title"] as! String
+            currentEvent.dateTimeString = eventDictionary["datetime_local"] as! String
           
-//            if let title = eventDictionary["title"] as! String {
-//              print("title = \(title)")
-//              currentEvent.title = title
-//            }
-//
-//            if let shortTitle = eventDictionary["short_title"] {
-//              print("short_title = \(shortTitle)")
-//            }
-
+            if let performersJsonArray = eventDictionary["performers"] as? [Dictionary<String, AnyObject>] {
+              
+              //FIXME -
+              //not sure we can assume home team always second element in array?
+              let homeTeam = performersJsonArray[1]
+              
+              if let imageUrl = homeTeam["image"] as? String {
+                currentEvent.imageUrlString  = imageUrl
+              }
+              
+            }
             eventArray.append(currentEvent)
         }
 
