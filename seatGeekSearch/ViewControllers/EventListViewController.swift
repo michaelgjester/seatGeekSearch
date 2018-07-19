@@ -78,6 +78,17 @@ extension EventListViewController: UITableViewDelegate {
     let selectedEvent: Event = self.eventArray[indexPath.row]
     let detailVC: EventDetailViewController = EventDetailViewController()
     detailVC.displayedEvent = selectedEvent
+    
+    
+//    let label = UILabel(frame: CGRect(x:0, y:0, width:400, height:50))
+//    label.backgroundColor = .clear
+//    label.numberOfLines = 2
+//    label.font = UIFont.boldSystemFont(ofSize: 16.0)
+//    label.textAlignment = .center
+//    label.textColor = .black
+//    label.text = "This is a\nmultiline string for the navBar"
+//    detailVC.navigationItem.titleView = label
+    
     self.navigationController?.pushViewController(detailVC, animated: true)
     
     tableView.deselectRow(at: indexPath, animated: true)
@@ -94,8 +105,7 @@ extension EventListViewController: UISearchBarDelegate {
   
   
   public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-    print("searchButtonClicked")
-    
+
     if let searchText = searchBar.text {
       
       let loadEventsCompletionHandler: ([Event]) -> Void = { [weak self] (eventArray:[Event]) -> Void in

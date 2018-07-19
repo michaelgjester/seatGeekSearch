@@ -19,12 +19,17 @@ class EventDetailViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    //set the title text
-    self.navigationItem.title = self.displayedEvent?.title
-    let attrs = [
-      NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Bold", size: 24)!
-    ]
-    self.navigationController?.navigationBar.titleTextAttributes = attrs
+    //set the navigation bar title text
+    //using multiple lines
+    let label = UILabel(frame: CGRect(x:0, y:0, width:400, height:400))
+    label.backgroundColor = .clear
+    label.numberOfLines = 2
+    label.font = UIFont.boldSystemFont(ofSize: 18.0)
+    label.textAlignment = .center
+    label.textColor = .black
+    let formattedTitle: String = (self.displayedEvent?.title.replacingOccurrences(of: " at ", with: " at\n"))!
+    label.text = formattedTitle
+    self.navigationItem.titleView = label
     
     if let event = self.displayedEvent {
       self.eventImageView.layer.cornerRadius = 10
