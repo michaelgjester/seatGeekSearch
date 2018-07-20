@@ -14,7 +14,6 @@ class EventListViewController: UIViewController {
   @IBOutlet weak var searchBar: UISearchBar!
   
   private var eventArray: [Event] = []
-  private var favoriteEventsArray: [Event] = []
   
     override func viewDidLoad() {
       super.viewDidLoad()
@@ -37,11 +36,6 @@ class EventListViewController: UIViewController {
           }
         }
         self?.eventArray = eventArray
-        
-        self?.favoriteEventsArray = eventArray.filter({ (event) -> Bool in
-          event.isFavorite
-        })
-        print("count = \(String(describing: self?.favoriteEventsArray.count ?? nil))")
         self?.eventListTableView.reloadData()
       }
       NetworkingManager.loadEventsWithCompletion(searchText: searchText, completionHandler: loadEventsCompletionHandler)
@@ -158,7 +152,6 @@ extension EventListViewController: UISearchBarDelegate {
         }
         
         self?.eventArray = eventArray
-        
         self?.eventListTableView.reloadData()
       }
       NetworkingManager.loadEventsWithCompletion(searchText: searchText, completionHandler: loadEventsCompletionHandler)
