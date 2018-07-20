@@ -15,6 +15,7 @@ class Event: NSObject {
   var locationString: String
   var dateTimeString: String
   var imageUrlString: String
+  var isFavorite: Bool
   
   //calculated / read-only properties
   var formattedDateTimeString: String {
@@ -37,6 +38,7 @@ class Event: NSObject {
     self.locationString = ""
     self.dateTimeString = ""
     self.imageUrlString = ""
+    self.isFavorite = false
   }
   
 }

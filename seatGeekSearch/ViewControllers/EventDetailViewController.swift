@@ -63,7 +63,10 @@ class EventDetailViewController: UIViewController {
   }
   
   @objc func heartTapped() {
-    let imageNameForCurrentState = "heart_red"
+    
+    //toggle 'isFavorite' status and update to appropriate image
+    displayedEvent?.isFavorite = !(displayedEvent?.isFavorite)!
+    let imageNameForCurrentState = (displayedEvent?.isFavorite)! ? "heart_red" : "heart_blank"
     let imageForCurrentState = UIImage(named: imageNameForCurrentState)
     self.heartButton.setImage(imageForCurrentState, for: .normal)
   }
