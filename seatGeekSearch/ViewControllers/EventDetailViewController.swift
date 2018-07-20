@@ -63,9 +63,6 @@ class EventDetailViewController: UIViewController {
     
     
     //add 'favorites' button to nav bar
-    //let blankHeartIcon = UIImage(named:"heart_blank")
-    
-    //is favorite image
     if let event = displayedEvent {
       let isFavorite = event.isFavorite
       let isFavoriteImage: UIImage? = isFavorite ? UIImage(named:"heart_red") : UIImage(named:"heart_blank")

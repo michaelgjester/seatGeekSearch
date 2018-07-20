@@ -22,23 +22,9 @@ class EventListViewController: UIViewController {
       eventListTableView.delegate = self
       searchBar.delegate = self
       
-      //FIXME - might remove this later
-      let searchText = "Texas Rangers"
-      searchBar.text = searchText
-      let loadEventsCompletionHandler: ([Event]) -> Void = { [weak self] (eventArray:[Event]) -> Void in
-        
-        //upon each network call re-perform check to see
-        //if the loaded events are 'favorited'
-        let savedEventIds = CoreDataManager.getSavedEventIds()
-        for event in eventArray {
-          if savedEventIds.contains(event.id){
-            event.isFavorite = true
-          }
-        }
-        self?.eventArray = eventArray
-        self?.eventListTableView.reloadData()
-      }
-      NetworkingManager.loadEventsWithCompletion(searchText: searchText, completionHandler: loadEventsCompletionHandler)
+      //give the search bar a default value
+      searchBar.text = "Texas Rangers"
+      performNetworkCall()
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,7 +43,26 @@ class EventListViewController: UIViewController {
     }
     */
   
-
+    private func performNetworkCall() {
+      let loadEventsCompletionHandler: ([Event]) -> Void = { [weak self] (eventArray:[Event]) -> Void in
+        
+        //upon each network call re-perform check coreData
+        //if the loaded events are 'favorited'
+        let savedEventIds = CoreDataManager.getSavedEventIds()
+        for event in eventArray {
+          if savedEventIds.contains(event.id){
+            event.isFavorite = true
+          }
+        }
+        self?.eventArray = eventArray
+        self?.eventListTableView.reloadData()
+      }
+      if let text = searchBar.text {
+        if !text.isEmpty {
+          NetworkingManager.loadEventsWithCompletion(searchText: text, completionHandler: loadEventsCompletionHandler)
+        }
+      }
+    }
 
 }
 
@@ -103,6 +108,7 @@ extension EventListViewController: UITableViewDelegate {
     detailVC.dismissVCHandler = {
       //reload master view in case changes have been made on the detail screen
       if let eventAfterUpdate = detailVC.displayedEvent {
+        //either add or delete event from saved favorites
         if eventAfterUpdate.isFavorite {
           CoreDataManager.addEvent(eventAfterUpdate)
         } else {
@@ -111,15 +117,6 @@ extension EventListViewController: UITableViewDelegate {
       }
       self.eventListTableView.reloadData()
     }
-    
-//    let label = UILabel(frame: CGRect(x:0, y:0, width:400, height:50))
-//    label.backgroundColor = .clear
-//    label.numberOfLines = 2
-//    label.font = UIFont.boldSystemFont(ofSize: 16.0)
-//    label.textAlignment = .center
-//    label.textColor = .black
-//    label.text = "This is a\nmultiline string for the navBar"
-//    detailVC.navigationItem.titleView = label
     
     self.navigationController?.pushViewController(detailVC, animated: true)
     
@@ -131,34 +128,11 @@ extension EventListViewController: UITableViewDelegate {
 // MARK: UISearchBarDelegate
 extension EventListViewController: UISearchBarDelegate {
   
-//  public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
-//    print("searchText = \(searchText)")
-//  }
-  
-  
   public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-
-    if let searchText = searchBar.text {
-      
-      let loadEventsCompletionHandler: ([Event]) -> Void = { [weak self] (eventArray:[Event]) -> Void in
-        
-        //upon each network call re-perform check to see
-        //if the loaded events are 'favorited'
-        let savedEventIds = CoreDataManager.getSavedEventIds()
-        for event in eventArray {
-          if savedEventIds.contains(event.id){
-            event.isFavorite = true
-          }
-        }
-        
-        self?.eventArray = eventArray
-        self?.eventListTableView.reloadData()
-      }
-      NetworkingManager.loadEventsWithCompletion(searchText: searchText, completionHandler: loadEventsCompletionHandler)
-      
-    }
     
+    performNetworkCall()
     searchBar.resignFirstResponder()
+    
   }
   
 }
