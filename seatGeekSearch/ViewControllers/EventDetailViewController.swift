@@ -11,6 +11,7 @@ import UIKit
 class EventDetailViewController: UIViewController {
 
   public var displayedEvent: Event? = nil
+  public var dismissVCHandler: (() -> Void)? = nil
   
   private var heartButton: UIButton = UIButton()
   
@@ -39,6 +40,13 @@ class EventDetailViewController: UIViewController {
       // Dispose of any resources that can be recreated.
   }
   
+  override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
+    if let dismissVCHandler = dismissVCHandler {
+      dismissVCHandler()
+    }
+  }
+  
   private func configureNavBar() {
     
     //set the navigation bar title text
@@ -55,11 +63,18 @@ class EventDetailViewController: UIViewController {
     
     
     //add 'favorites' button to nav bar
-    let blankHeartIcon = UIImage(named:"heart_blank")
-    self.heartButton.setImage(blankHeartIcon, for: .normal)
-    self.heartButton.addTarget(self, action: #selector(heartTapped), for: .touchUpInside)
-    let rightBarButton = UIBarButtonItem(customView: heartButton)
-    self.navigationItem.rightBarButtonItem = rightBarButton
+    //let blankHeartIcon = UIImage(named:"heart_blank")
+    
+    //is favorite image
+    if let event = displayedEvent {
+      let isFavorite = event.isFavorite
+      let isFavoriteImage: UIImage? = isFavorite ? UIImage(named:"heart_red") : UIImage(named:"heart_blank")
+      self.heartButton.setImage(isFavoriteImage, for: .normal)
+      self.heartButton.addTarget(self, action: #selector(heartTapped), for: .touchUpInside)
+      let rightBarButton = UIBarButtonItem(customView: heartButton)
+      self.navigationItem.rightBarButtonItem = rightBarButton
+    }
+
   }
   
   @objc func heartTapped() {

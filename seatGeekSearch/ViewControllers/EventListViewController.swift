@@ -75,7 +75,7 @@ extension EventListViewController: UITableViewDataSource {
     cell.eventThumbnailImageView?.downloadImageFromNetworkAtURL(url: eventArray[indexPath.row].imageUrlString)
 
     //is favorite image
-    let isFavorite = true
+    let isFavorite = eventArray[indexPath.row].isFavorite
     let isFavoriteImage: UIImage? = isFavorite ? UIImage(named:"heart_red") : nil
     cell.eventIsFavoriteImageView.image = isFavoriteImage
     
@@ -89,10 +89,12 @@ extension EventListViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
-    let selectedEvent: Event = self.eventArray[indexPath.row]
     let detailVC: EventDetailViewController = EventDetailViewController()
-    detailVC.displayedEvent = selectedEvent
-    
+    detailVC.displayedEvent = self.eventArray[indexPath.row]
+    detailVC.dismissVCHandler = {
+      //reload master view in case changes have been made on the detail screen
+      self.eventListTableView.reloadData()
+    }
     
 //    let label = UILabel(frame: CGRect(x:0, y:0, width:400, height:50))
 //    label.backgroundColor = .clear
