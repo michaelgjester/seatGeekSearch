@@ -28,8 +28,14 @@ class EventListViewController: UIViewController {
       searchBar.text = searchText
       let loadEventsCompletionHandler: ([Event]) -> Void = { [weak self] (eventArray:[Event]) -> Void in
         
-        eventArray[0].isFavorite = true
-        eventArray[3].isFavorite = true
+        //upon each network call re-perform check to see
+        //if the loaded events are 'favorited'
+        let savedEventIds = CoreDataManager.getSavedEventIds()
+        for event in eventArray {
+          if savedEventIds.contains(event.id){
+            event.isFavorite = true
+          }
+        }
         self?.eventArray = eventArray
         
         self?.favoriteEventsArray = eventArray.filter({ (event) -> Bool in
@@ -141,6 +147,15 @@ extension EventListViewController: UISearchBarDelegate {
     if let searchText = searchBar.text {
       
       let loadEventsCompletionHandler: ([Event]) -> Void = { [weak self] (eventArray:[Event]) -> Void in
+        
+        //upon each network call re-perform check to see
+        //if the loaded events are 'favorited'
+        let savedEventIds = CoreDataManager.getSavedEventIds()
+        for event in eventArray {
+          if savedEventIds.contains(event.id){
+            event.isFavorite = true
+          }
+        }
         
         self?.eventArray = eventArray
         
