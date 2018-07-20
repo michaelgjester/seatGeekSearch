@@ -12,6 +12,8 @@ class EventDetailViewController: UIViewController {
 
   public var displayedEvent: Event? = nil
   
+  private var heartButton: UIButton = UIButton()
+  
   @IBOutlet weak var eventImageView: UIImageView!
   @IBOutlet weak var eventDateTimeLabel: UILabel!
   @IBOutlet weak var eventLocationLabel: UILabel!
@@ -19,17 +21,7 @@ class EventDetailViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    //set the navigation bar title text
-    //using multiple lines
-    let label = UILabel(frame: CGRect(x:0, y:0, width:400, height:400))
-    label.backgroundColor = .clear
-    label.numberOfLines = 2
-    label.font = UIFont.boldSystemFont(ofSize: 18.0)
-    label.textAlignment = .center
-    label.textColor = .black
-    let formattedTitle: String = (self.displayedEvent?.title.replacingOccurrences(of: " at ", with: " at\n"))!
-    label.text = formattedTitle
-    self.navigationItem.titleView = label
+    configureNavBar()
     
     if let event = self.displayedEvent {
       self.eventImageView.layer.cornerRadius = 10
@@ -47,6 +39,34 @@ class EventDetailViewController: UIViewController {
       // Dispose of any resources that can be recreated.
   }
   
+  private func configureNavBar() {
+    
+    //set the navigation bar title text
+    //using multiple lines
+    let label = UILabel(frame: CGRect(x:0, y:0, width:400, height:400))
+    label.backgroundColor = .clear
+    label.numberOfLines = 2
+    label.font = UIFont.boldSystemFont(ofSize: 18.0)
+    label.textAlignment = .center
+    label.textColor = .black
+    let formattedTitle: String = (self.displayedEvent?.title.replacingOccurrences(of: " at ", with: " at\n"))!
+    label.text = formattedTitle
+    self.navigationItem.titleView = label
+    
+    
+    //add 'favorites' button to nav bar
+    let blankHeartIcon = UIImage(named:"heart_blank")
+    self.heartButton.setImage(blankHeartIcon, for: .normal)
+    self.heartButton.addTarget(self, action: #selector(heartTapped), for: .touchUpInside)
+    let rightBarButton = UIBarButtonItem(customView: heartButton)
+    self.navigationItem.rightBarButtonItem = rightBarButton
+  }
+  
+  @objc func heartTapped() {
+    let imageNameForCurrentState = "heart_red"
+    let imageForCurrentState = UIImage(named: imageNameForCurrentState)
+    self.heartButton.setImage(imageForCurrentState, for: .normal)
+  }
 
   /*
   // MARK: - Navigation

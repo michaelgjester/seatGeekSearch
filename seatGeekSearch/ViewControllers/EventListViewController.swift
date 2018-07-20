@@ -22,7 +22,15 @@ class EventListViewController: UIViewController {
       eventListTableView.delegate = self
       searchBar.delegate = self
       
-
+      //FIXME - might remove this later
+      let searchText = "Texas Rangers"
+      searchBar.text = searchText
+      let loadEventsCompletionHandler: ([Event]) -> Void = { [weak self] (eventArray:[Event]) -> Void in
+        
+        self?.eventArray = eventArray
+        self?.eventListTableView.reloadData()
+      }
+      NetworkingManager.loadEventsWithCompletion(searchText: searchText, completionHandler: loadEventsCompletionHandler)
     }
 
     override func didReceiveMemoryWarning() {
