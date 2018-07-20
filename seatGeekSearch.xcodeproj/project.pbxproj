@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D5832A4210238D700DB435C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5832A3210238D700DB435C /* CoreDataManager.swift */; };
+		1D5832A72102394300DB435C /* SeatGeekEvents.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1D5832A52102394300DB435C /* SeatGeekEvents.xcdatamodeld */; };
 		1DFF9B402100B1E700C4613A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFF9B3F2100B1E700C4613A /* AppDelegate.swift */; };
 		1DFF9B452100B1E700C4613A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DFF9B432100B1E700C4613A /* Main.storyboard */; };
 		1DFF9B472100B1E900C4613A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DFF9B462100B1E900C4613A /* Assets.xcassets */; };
@@ -41,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D5832A3210238D700DB435C /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		1D5832A62102394300DB435C /* SeatGeekEvents.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SeatGeekEvents.xcdatamodel; sourceTree = "<group>"; };
 		1DFF9B3C2100B1E700C4613A /* seatGeekSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = seatGeekSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DFF9B3F2100B1E700C4613A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1DFF9B442100B1E700C4613A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -88,6 +92,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D5832A2210238A900DB435C /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				1D5832A3210238D700DB435C /* CoreDataManager.swift */,
+				1D5832A52102394300DB435C /* SeatGeekEvents.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		1DFF9B332100B1E700C4613A = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +124,7 @@
 		1DFF9B3E2100B1E700C4613A /* seatGeekSearch */ = {
 			isa = PBXGroup;
 			children = (
+				1D5832A2210238A900DB435C /* CoreData */,
 				1DFF9B6E2100B64900C4613A /* Model */,
 				1DFF9B6D2100B59900C4613A /* Networking */,
 				1DFF9B732100D42400C4613A /* ViewControllers */,
@@ -303,11 +317,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DFF9B7E2101002B00C4613A /* ImageCache.swift in Sources */,
+				1D5832A72102394300DB435C /* SeatGeekEvents.xcdatamodeld in Sources */,
 				1DFF9B7A2100DEAD00C4613A /* EventTableViewCell.swift in Sources */,
 				1DFF9B762100D46400C4613A /* EventListViewController.swift in Sources */,
 				1DFF9B722100B75400C4613A /* NetworkingManager.swift in Sources */,
 				1DFF9B702100B69B00C4613A /* Event.swift in Sources */,
 				1DFF9B402100B1E700C4613A /* AppDelegate.swift in Sources */,
+				1D5832A4210238D700DB435C /* CoreDataManager.swift in Sources */,
 				1DFF9B842101045D00C4613A /* EventDetailViewController.swift in Sources */,
 				1DFF9B7F2101002B00C4613A /* UIImageView+Networking.swift in Sources */,
 			);
@@ -636,6 +652,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1D5832A52102394300DB435C /* SeatGeekEvents.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1D5832A62102394300DB435C /* SeatGeekEvents.xcdatamodel */,
+			);
+			currentVersion = 1D5832A62102394300DB435C /* SeatGeekEvents.xcdatamodel */;
+			path = SeatGeekEvents.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1DFF9B342100B1E700C4613A /* Project object */;
 }

@@ -14,6 +14,7 @@ class EventListViewController: UIViewController {
   @IBOutlet weak var searchBar: UISearchBar!
   
   private var eventArray: [Event] = []
+  private var favoriteEventsArray: [Event] = []
   
     override func viewDidLoad() {
       super.viewDidLoad()
@@ -27,7 +28,14 @@ class EventListViewController: UIViewController {
       searchBar.text = searchText
       let loadEventsCompletionHandler: ([Event]) -> Void = { [weak self] (eventArray:[Event]) -> Void in
         
+        eventArray[0].isFavorite = true
+        eventArray[3].isFavorite = true
         self?.eventArray = eventArray
+        
+        self?.favoriteEventsArray = eventArray.filter({ (event) -> Bool in
+          event.isFavorite
+        })
+        print("count = \(String(describing: self?.favoriteEventsArray.count ?? nil))")
         self?.eventListTableView.reloadData()
       }
       NetworkingManager.loadEventsWithCompletion(searchText: searchText, completionHandler: loadEventsCompletionHandler)
@@ -75,7 +83,8 @@ extension EventListViewController: UITableViewDataSource {
     cell.eventThumbnailImageView?.downloadImageFromNetworkAtURL(url: eventArray[indexPath.row].imageUrlString)
 
     //is favorite image
-    let isFavorite = eventArray[indexPath.row].isFavorite
+    let savedEventIds = CoreDataManager.getSavedEventIds()
+    let isFavorite = savedEventIds.contains(eventArray[indexPath.row].id)
     let isFavoriteImage: UIImage? = isFavorite ? UIImage(named:"heart_red") : nil
     cell.eventIsFavoriteImageView.image = isFavoriteImage
     
@@ -93,6 +102,13 @@ extension EventListViewController: UITableViewDelegate {
     detailVC.displayedEvent = self.eventArray[indexPath.row]
     detailVC.dismissVCHandler = {
       //reload master view in case changes have been made on the detail screen
+      if let eventAfterUpdate = detailVC.displayedEvent {
+        if eventAfterUpdate.isFavorite {
+          CoreDataManager.addEvent(eventAfterUpdate)
+        } else {
+          CoreDataManager.deleteEvent(eventAfterUpdate)
+        }
+      }
       self.eventListTableView.reloadData()
     }
     
@@ -127,6 +143,7 @@ extension EventListViewController: UISearchBarDelegate {
       let loadEventsCompletionHandler: ([Event]) -> Void = { [weak self] (eventArray:[Event]) -> Void in
         
         self?.eventArray = eventArray
+        
         self?.eventListTableView.reloadData()
       }
       NetworkingManager.loadEventsWithCompletion(searchText: searchText, completionHandler: loadEventsCompletionHandler)
