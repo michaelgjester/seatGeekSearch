@@ -10,6 +10,7 @@ import UIKit
 
 class EventTableViewCell: UITableViewCell {
 
+  @IBOutlet weak var eventIsFavoriteImageView: UIImageView!
   @IBOutlet weak var eventThumbnailImageView: UIImageView!
   @IBOutlet weak var eventTitleLabel: UILabel!
   @IBOutlet weak var eventLocationLabel: UILabel!

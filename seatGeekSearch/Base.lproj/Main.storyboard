@@ -64,6 +64,9 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oJp-HJ-Hof">
+                                                    <rect key="frame" x="8" y="23" width="20" height="20"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="dIG-3y-S7e" firstAttribute="top" secondItem="NCi-tn-hB3" secondAttribute="bottom" constant="5" id="3ET-MC-icq"/>
@@ -71,16 +74,21 @@
                                                 <constraint firstItem="NCi-tn-hB3" firstAttribute="trailing" secondItem="8zm-mc-JAP" secondAttribute="trailing" id="8MM-g6-Cc9"/>
                                                 <constraint firstItem="tFD-cA-ZoA" firstAttribute="leading" secondItem="Eoz-lO-5bu" secondAttribute="leading" constant="15" id="QrX-dh-CB7"/>
                                                 <constraint firstItem="8zm-mc-JAP" firstAttribute="top" secondItem="Eoz-lO-5bu" secondAttribute="top" constant="5" id="WE1-Jf-PYe"/>
+                                                <constraint firstItem="oJp-HJ-Hof" firstAttribute="leading" secondItem="Eoz-lO-5bu" secondAttribute="leading" constant="8" id="ZBO-oQ-0Yj"/>
                                                 <constraint firstItem="dIG-3y-S7e" firstAttribute="leading" secondItem="8zm-mc-JAP" secondAttribute="leading" id="dlr-zV-sYx"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="oJp-HJ-Hof" secondAttribute="bottom" constant="66" id="f6B-uS-xDh"/>
                                                 <constraint firstItem="8zm-mc-JAP" firstAttribute="trailing" secondItem="Eoz-lO-5bu" secondAttribute="trailingMargin" constant="10" id="hhX-IG-9Wu"/>
+                                                <constraint firstItem="8zm-mc-JAP" firstAttribute="leading" secondItem="oJp-HJ-Hof" secondAttribute="trailing" constant="62" id="m8G-Yg-Vnn"/>
                                                 <constraint firstItem="8zm-mc-JAP" firstAttribute="leading" secondItem="tFD-cA-ZoA" secondAttribute="trailing" constant="15" id="oFw-k8-9Ax"/>
                                                 <constraint firstItem="NCi-tn-hB3" firstAttribute="leading" secondItem="8zm-mc-JAP" secondAttribute="leading" id="oGH-f6-g6N"/>
                                                 <constraint firstItem="dIG-3y-S7e" firstAttribute="trailing" secondItem="8zm-mc-JAP" secondAttribute="trailing" id="pyI-Bw-ZFf"/>
                                                 <constraint firstItem="tFD-cA-ZoA" firstAttribute="centerY" secondItem="Eoz-lO-5bu" secondAttribute="centerY" id="wKl-3B-Oh9"/>
+                                                <constraint firstItem="oJp-HJ-Hof" firstAttribute="top" secondItem="Eoz-lO-5bu" secondAttribute="top" constant="23" id="zkx-E6-Vb3"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="eventDateTimeLabel" destination="dIG-3y-S7e" id="LbJ-EX-W9D"/>
+                                            <outlet property="eventIsFavoriteImageView" destination="oJp-HJ-Hof" id="XmC-GX-KQS"/>
                                             <outlet property="eventLocationLabel" destination="NCi-tn-hB3" id="ET5-cy-iFf"/>
                                             <outlet property="eventThumbnailImageView" destination="tFD-cA-ZoA" id="YbQ-Wc-jSI"/>
                                             <outlet property="eventTitleLabel" destination="8zm-mc-JAP" id="GrD-QC-54K"/>

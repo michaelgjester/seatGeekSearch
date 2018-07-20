@@ -64,14 +64,20 @@ extension EventListViewController: UITableViewDataSource {
     let reuseIdentifier = "EventTableViewCell"
     let cell = eventListTableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! EventTableViewCell
     
+    //text labels
     cell.eventTitleLabel.text = eventArray[indexPath.row].title
     cell.eventLocationLabel.text = eventArray[indexPath.row].locationString
     cell.eventDateTimeLabel.text = eventArray[indexPath.row].formattedDateTimeString
     
+    //thumbnail image
     cell.eventThumbnailImageView.layer.cornerRadius = 10
     cell.eventThumbnailImageView.clipsToBounds = true
     cell.eventThumbnailImageView?.downloadImageFromNetworkAtURL(url: eventArray[indexPath.row].imageUrlString)
 
+    //is favorite image
+    let isFavorite = true
+    let isFavoriteImage: UIImage? = isFavorite ? UIImage(named:"heart_red") : nil
+    cell.eventIsFavoriteImageView.image = isFavoriteImage
     
     return cell
   }
