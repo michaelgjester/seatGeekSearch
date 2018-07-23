@@ -69,6 +69,10 @@ class EventDetailViewController: UIViewController {
       self.heartButton.setImage(isFavoriteImage, for: .normal)
       self.heartButton.addTarget(self, action: #selector(heartTapped), for: .touchUpInside)
       let rightBarButton = UIBarButtonItem(customView: heartButton)
+      let barButtonWidthConstraint = rightBarButton.customView?.widthAnchor.constraint(equalToConstant: 20)
+      let barButtonHeightConstraint = rightBarButton.customView?.heightAnchor.constraint(equalToConstant: 20)
+      barButtonWidthConstraint?.isActive = true
+      barButtonHeightConstraint?.isActive = true
       self.navigationItem.rightBarButtonItem = rightBarButton
     }
 
